@@ -1,0 +1,12 @@
+@import '../../../vars';
+
+.toolbar-row-hidden {
+  display: none;
+}
+
+.tool-row {
+  &:hover {
+    cursor: pointer;
+    color: $color-dark-back;
+  }
+}
