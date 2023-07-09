@@ -9,5 +9,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: $color-dark-back;
   color: $color-white;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
