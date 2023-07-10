@@ -12,6 +12,9 @@ import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
+import { MatCardModule } from '@angular/material/card';
+import { FilmCardComponent } from './components/film-card/film-card.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { FooterComponent } from './components/footer/footer.component';
     FilmesComponent,
     NaveComponent,
     ToolBarComponent,
-    FooterComponent
+    FooterComponent,
+    FilmCardComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { FooterComponent } from './components/footer/footer.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

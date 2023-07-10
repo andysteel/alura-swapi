@@ -1,1 +1,16 @@
-<p>filmes works!</p>
+<div class="title-page">
+  <h1>Films</h1>
+</div>
+<div *ngIf="filmsResponse && filmsResponse.results.length > 0" class="list-films">
+  <ng-container *ngFor="let film of filmsResponse.results">
+    <app-film-card [film]="film" />
+  </ng-container>
+</div>
+
+<mat-paginator class="paginator" *ngIf="filmsResponse" [length]="filmsResponse.count"
+              [pageSize]="10"
+              [hidePageSize]="true"
+              [color]="'primary'"
+              (page)="handlePageEvent($event)"
+              [showFirstLastButtons]="true"
+              aria-label="Select page" />
