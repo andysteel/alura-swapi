@@ -6,3 +6,21 @@
 .footer-p {
   padding-left: 1em;
 }
+
+.film-tree-invisible {
+  display: none;
+}
+
+.film-tree ul,
+.film-tree li {
+  list-style-type: none;
+}
+
+.film-tree div[role=group] {
+  padding-left: 40px;
+}
+
+.film-tree div[role=group] > .mat-tree-node {
+  padding-left: 40px;
+}
+

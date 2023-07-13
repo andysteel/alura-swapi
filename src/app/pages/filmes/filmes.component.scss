@@ -8,7 +8,7 @@
 
 .title-page {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -21,4 +21,15 @@
 
 .paginator {
   margin-top: 2em;
+}
+
+.loading {
+  top: 12rem
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
