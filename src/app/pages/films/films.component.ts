@@ -8,11 +8,11 @@ import { catchError, debounceTime, distinctUntilChanged, map, of, switchMap, thr
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-filmes',
-  templateUrl: './filmes.component.html',
-  styleUrls: ['./filmes.component.scss']
+  selector: 'app-films',
+  templateUrl: './films.component.html',
+  styleUrls: ['./films.component.scss']
 })
-export class FilmesComponent implements OnInit {
+export class FilmsComponent implements OnInit {
 
   filmsResponse!: PageableResponse<Film>;
   isLoading = false;
