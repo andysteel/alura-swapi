@@ -14,3 +14,11 @@ export interface Film {
   edited: string;
   url: string;
 }
+
+export enum FilmDataEnum {
+  CHARACTERS = 'Characters',
+  PLANETS = 'Planets',
+  STARCHIPS = 'Starships',
+  VEHICLES = 'Vehicles',
+  SPECIES = 'Species'
+}

@@ -10,9 +10,32 @@
     </p>
   </mat-card-content>
   <br>
-  <mat-card-footer>
+  <mat-card-footer [id]="'film-'+film.episode_id">
     <p class="footer-p"><b>Director:</b> {{film.director}}</p>
     <p class="footer-p"><b>Producer:</b> {{film.producer}}</p>
     <p class="footer-p"><b>Release date:</b> {{ film.release_date | date:'dd/MM/yyyy'}}</p>
+    <mat-tree [dataSource]="treeDataSource" [treeControl]="treeControl" class="film-tree">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+          <button mat-icon-button disabled></button>
+          {{node.name}}
+      </mat-tree-node>
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+        <button mat-icon-button matTreeNodeToggle (click)="createTreeData(film, treeControl.isExpanded(node))"
+                    [attr.aria-label]="'Toggle ' + node.name">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+            {{node.name}}
+        <br>
+        <mat-progress-bar class="loading-children" *ngIf="isLoading" mode="indeterminate" />
+        <div id="children" [class.film-tree-invisible]="!treeControl.isExpanded(node)"
+              role="group">
+          <ul *ngIf="node?.children">
+            <li *ngFor="let character of node.children">{{character.name}}</li>
+          </ul>
+        </div>
+      </mat-tree-node>
+    </mat-tree>
   </mat-card-footer>
 </mat-card>
