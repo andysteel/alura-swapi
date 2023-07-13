@@ -1,7 +1,5 @@
-<div class="title-page">
-  <h1>Films</h1>
-  <mat-spinner class="loading" *ngIf="isLoading"  [mode]="'indeterminate'" />
-</div>
+<app-page-title [isLoading]="isLoading" [title]="'Films'" />
+
 <form [formGroup]="searchForm">
   <div class="search-form">
     <mat-form-field appearance="fill" style="width: 40%;">

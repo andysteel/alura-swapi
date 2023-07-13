@@ -1,0 +1,5 @@
+<div class="title-page">
+  <h1>{{title}}</h1>
+  <ng-container *ngTemplateOutlet="template"></ng-container>
+  <mat-spinner class="loading" *ngIf="isLoading"  [mode]="'indeterminate'" />
+</div>

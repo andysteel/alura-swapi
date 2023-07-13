@@ -6,25 +6,8 @@
   align-items: center;
 }
 
-.title-page {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 2em;
-  h1 {
-    font-size: 3em;
-    font-weight: bold;
-  }
-}
-
 .paginator {
   margin-top: 2em;
-}
-
-.loading {
-  top: 12rem
 }
 
 .search-form {

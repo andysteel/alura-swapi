@@ -1,40 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageableResponse } from 'src/app/types/pageable-response';
 import { Film } from 'src/app/types/films-response';
 import { PageEvent } from '@angular/material/paginator';
-import { FilmsService, stringOrNull } from 'src/app/services/films.service';
+import { FilmsService } from 'src/app/services/films.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { catchError, debounceTime, distinctUntilChanged, map, of, switchMap, throwError } from 'rxjs';
+import { Subscription, catchError, debounceTime, distinctUntilChanged, map, of, switchMap, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { stringOrNull } from 'src/app/types/util-types';
 
 @Component({
   selector: 'app-films',
   templateUrl: './films.component.html',
   styleUrls: ['./films.component.scss']
 })
-export class FilmsComponent implements OnInit {
+export class FilmsComponent implements OnInit, OnDestroy {
 
   filmsResponse!: PageableResponse<Film>;
   isLoading = false;
   searchForm!: FormGroup<{search: FormControl<string | null>}>;
+  subs: Subscription[] = [];
+  pageIndex = 0;
+  searchValue: stringOrNull = null;
 
   constructor(
     private filmsService: FilmsService,
     private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.getFilms(1, null);
+    this.getFilms(this.pageIndex, null);
     this.buildForm();
     this.setFormSubscriber();
   }
 
+  ngOnDestroy(): void {
+    this.subs.forEach(sub => sub.unsubscribe());
+  }
+
   handlePageEvent($event: PageEvent) {
-    this.getFilms($event.pageIndex, null);
+    this.pageIndex = $event.pageIndex;
+    this.getFilms($event.pageIndex, this.searchValue);
   }
 
   getFilms(page: number, search: stringOrNull) {
     this.isLoading = true;
-    this.filmsService.getAllFilms(page, search)
+    this.filmsService.getAllFilms(page + 1, search)
     .subscribe({
       next: response => {
         this.filmsResponse = response;
@@ -54,7 +63,7 @@ export class FilmsComponent implements OnInit {
   }
 
   private setFormSubscriber() {
-    this.searchForm.controls
+    const sub = this.searchForm.controls
       .search
       .valueChanges
       .pipe(
@@ -62,6 +71,8 @@ export class FilmsComponent implements OnInit {
         distinctUntilChanged(),
         switchMap((value) => {
           this.isLoading = true;
+          this.searchValue = value;
+          this.pageIndex = 0;
           return this.filmsService.getAllFilms(1, value)
         }),
         catchError((error) => {
@@ -73,7 +84,8 @@ export class FilmsComponent implements OnInit {
       .subscribe(value => {
         this.filmsResponse = value;
         this.isLoading = false;
-      })
+      });
+      this.subs.push(sub);
   }
 
 }

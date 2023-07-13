@@ -23,6 +23,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { PageTitleComponent } from './components/page-title/page-title.component';
+import { StarshipCardComponent } from './components/starship-card/starship-card.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     StarshipsComponent,
     ToolBarComponent,
     FooterComponent,
-    FilmCardComponent
+    FilmCardComponent,
+    PageTitleComponent,
+    StarshipCardComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
