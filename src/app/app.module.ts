@@ -26,6 +26,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { StarshipCardComponent } from './components/starship-card/starship-card.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { DefaultColorDirective } from './directives/default-color.directive';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatChipsModule } from '@angular/material/chips';
     FooterComponent,
     FilmCardComponent,
     PageTitleComponent,
-    StarshipCardComponent
+    StarshipCardComponent,
+    DefaultColorDirective
   ],
   imports: [
     BrowserModule,

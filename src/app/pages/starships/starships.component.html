@@ -4,7 +4,7 @@
   <div class="search-form">
     <mat-form-field appearance="fill" style="width: 40%;">
       <mat-label>Search</mat-label>
-      <input matInput formControlName="search" id="search" >
+      <input matInput formControlName="search" id="search">
       <mat-hint>Search starships by name</mat-hint>
     </mat-form-field>
   </div>
@@ -28,7 +28,7 @@
 
 <ng-template #totalChips>
   <mat-chip-listbox *ngIf="starshipsResponse && !isLoading" aria-label="Total starchips">
-    <mat-chip color="warn">
+    <mat-chip appDefaultColor>
       Total of starships {{starshipsResponse.count}}
     </mat-chip>
   </mat-chip-listbox>
