@@ -1,0 +1,19 @@
+@import '../../../vars';
+
+.toolbar-fixed {
+  left: 0;
+  top: 0;
+  position: sticky;
+  z-index: 1000;
+}
+
+.toolbar-row-hidden {
+  display: none;
+}
+
+.tool-row {
+  &:hover {
+    cursor: pointer;
+    color: $color-dark-back;
+  }
+}

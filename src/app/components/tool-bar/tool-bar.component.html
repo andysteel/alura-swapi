@@ -1,0 +1,14 @@
+<mat-toolbar class="toolbar-fixed" [color]="'primary'">
+  <mat-toolbar-row>
+    <button (click)="showMenu()" mat-icon-button aria-label="icon-button with menu icon">
+      <mat-icon >menu</mat-icon>
+    </button>
+    <span class="tool-row" routerLink="/">Alura SWAPI</span>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="tool-row" [ngClass]="{'toolbar-row-hidden': isMenuHidden}">
+    <span (click)="navigate('films')">Films</span>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="tool-row" [ngClass]="{'toolbar-row-hidden': isMenuHidden}">
+    <span (click)="navigate('starships')">Starships</span>
+  </mat-toolbar-row>
+</mat-toolbar>

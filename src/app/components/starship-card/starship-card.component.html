@@ -1,0 +1,24 @@
+<mat-card class="starship-card" >
+  <mat-card-header>
+    <mat-card-title>{{starship.name}}</mat-card-title>
+    <mat-card-subtitle>Model {{starship.model}}</mat-card-subtitle>
+  </mat-card-header>
+  <br>
+  <mat-card-content>
+    <p class="pl1"><b>Manufacturer:</b> {{starship.manufacturer}}</p>
+    <p class="pl1"><b>Cost in credits:</b> {{starship.cost_in_credits}}</p>
+    <p class="pl1"><b>Length:</b> {{starship.length}}</p>
+    <p class="pl1"><b>Max atmosphering speed:</b> {{starship.max_atmosphering_speed}}</p>
+    <p class="pl1"><b>Crew:</b> {{starship.crew}}</p>
+    <p class="pl1"><b>Passengers:</b> {{starship.passengers}}</p>
+    <p class="pl1"><b>Cargo capacity:</b> {{starship.cargo_capacity}}</p>
+    <p class="pl1"><b>Consumables:</b> {{starship.consumables}}</p>
+  </mat-card-content>
+  <br>
+  <mat-card-footer [id]="'starship-'+starship.name.toLowerCase().replaceAll(' ','-')">
+    <p class="pl1"><b>Hyperdrive rating:</b> {{starship.hyperdrive_rating}}</p>
+    <p class="pl1"><b>MGLT:</b> {{starship.MGLT}}</p>
+    <p class="pl1"><b>Starship class:</b> {{starship.starship_class}}</p>
+  </mat-card-footer>
+</mat-card>
+

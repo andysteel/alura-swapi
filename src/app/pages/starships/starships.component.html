@@ -1,0 +1,35 @@
+<app-page-title [isLoading]="isLoading" [title]="'Starships'" [template]="totalChips" />
+
+<form [formGroup]="searchForm">
+  <div class="search-form">
+    <mat-form-field appearance="fill" style="width: 40%;">
+      <mat-label>Search</mat-label>
+      <input matInput formControlName="search" id="search">
+      <mat-hint>Search starships by name</mat-hint>
+    </mat-form-field>
+  </div>
+</form>
+<br>
+<br>
+<div *ngIf="starshipsResponse && starshipsResponse.results.length > 0 && !isLoading" class="list-starships">
+  <ng-container *ngFor="let starship of starshipsResponse.results">
+    <app-starship-card [starship]="starship" />
+  </ng-container>
+</div>
+
+<mat-paginator class="paginator" *ngIf="starshipsResponse && !isLoading" [length]="starshipsResponse.count"
+              [pageSize]="10"
+              [hidePageSize]="true"
+              [color]="'primary'"
+              (page)="handlePageEvent($event)"
+              [showFirstLastButtons]="true"
+              [pageIndex]="pageIndex"
+              aria-label="Select page" />
+
+<ng-template #totalChips>
+  <mat-chip-listbox *ngIf="starshipsResponse && !isLoading" aria-label="Total starchips">
+    <mat-chip appDefaultColor>
+      Total of starships {{starshipsResponse.count}}
+    </mat-chip>
+  </mat-chip-listbox>
+</ng-template>

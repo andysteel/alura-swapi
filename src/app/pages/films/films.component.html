@@ -1,0 +1,26 @@
+<app-page-title [isLoading]="isLoading" [title]="'Films'" />
+
+<form [formGroup]="searchForm">
+  <div class="search-form">
+    <mat-form-field appearance="fill" style="width: 40%;">
+      <mat-label>Search</mat-label>
+      <input matInput formControlName="search" id="search" >
+      <mat-hint>Search films by name</mat-hint>
+    </mat-form-field>
+  </div>
+</form>
+<br>
+<br>
+<div *ngIf="filmsResponse && filmsResponse.results.length > 0 && !isLoading" class="list-films">
+  <ng-container *ngFor="let film of filmsResponse.results">
+    <app-film-card [film]="film" />
+  </ng-container>
+</div>
+
+<mat-paginator class="paginator" *ngIf="filmsResponse && !isLoading" [length]="filmsResponse.count"
+              [pageSize]="10"
+              [hidePageSize]="true"
+              [color]="'primary'"
+              (page)="handlePageEvent($event)"
+              [showFirstLastButtons]="true"
+              aria-label="Select page" />
